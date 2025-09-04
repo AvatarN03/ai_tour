@@ -1,5 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/components/Header";
+import { DarkModeProvider } from "@/components/DarkModeToggle";
+import Footer from "@/components/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,14 +17,18 @@ const geistMono = localFont({
 
 export const metadata = {
   title: "Ai_tour",
-  description: "Discover the world with AI-powered tours tailored just for you.",
+  description:
+    "Discover the world with AI-powered tours tailored just for you.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <DarkModeProvider>
+          {children}
+          <Footer />
+        </DarkModeProvider>
       </body>
     </html>
   );
